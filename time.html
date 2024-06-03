@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #235391;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #235391;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        button[type="submit"] {
+            background-color: #235391;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #1a3d6d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Form</h1>
+<form action="{{ url_for('edittime') }}" method="post">
+    <input type="hidden" name="course_id" value="{{ course.id }}">
+    <div class="form-group">
+        <label for="start_time">وقت البدء</label>
+        <div class="input-group">
+            <input type="datetime-local" class="form-control" id="start_time" name="start_time" value="{{ course.online_start_time.strftime('%Y-%m-%dT%H:%M') }}" aria-describedby="start_time_help" required>
+            <div class="input-group-append">
+                <span class="input-group-text" id="start_time_help">
+                    <i class="fas fa-calendar-alt"></i>
+                </span>
+            </div>
+        </div>
+        <small id="start_time_help" class="form-text text-muted">اختر التاريخ والوقت لبدء الاجتماع عبر الإنترنت.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">حفظ</button>
+</form>
+    </div>
+</body>
+</html>
